@@ -1,4 +1,4 @@
-# Hackathon2024 GitHub Repository - Cody, Justus, Carlos
+# Hackathon GitHub Repository - Cody, Justus, Carlos
 This is Cody, Justus, and Carlos' 2024 Hackathon project.
 # Prompt Chosen
 - Make a new, creative Spotify stats website using the Spotify API.
