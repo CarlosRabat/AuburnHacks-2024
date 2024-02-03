@@ -38,8 +38,20 @@ def search_for_artist(token, artist_name):
     query_url = url + query
     result = get(query_url, headers=headers)
     json_result = json.loads(result.content)
+    artist_id = json_result.get("artists", {}).get("items", [{}])[0].get("id")
 
-    return json_result[0]
+    return artist_id
+
+
+def search_related_artist(token, artist_id, limit=5):
+    url = f"https://api.spotify.com/v1/artists/{artist_id}/related-artists"
+    headers = get_auth_header(token)
+
+    result = get(url, headers=headers)
+    json_result = json.loads(result.content)
+    related_artists = json_result.get("artists", [])[:limit]
+    artist_names = [artist.get("name") for artist in related_artists]
+    return artist_names
 
 
 def main():
@@ -49,7 +61,10 @@ def main():
 
     access_token = get_access_token(client_id, client_secret)
 
-    search_for_artist(access_token, "ACDC")
+    artist_id = search_for_artist(access_token, "ACDC")
+    related_artist = search_related_artist(access_token, artist_id)
+
+    print(related_artist)
 
 
 if __name__ == "__main__":
