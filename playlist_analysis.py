@@ -25,22 +25,6 @@ sp = get_user()
 # feat = getTrackFeatures(ids[0])
 # df = get_data(ids)
 
-# Function to perform manipulation and create dataframe
-# def analyze_playlist(playlist_name):
-#     # This is a dummy function, replace it with your own logic to fetch playlist data
-#     # For simplicity, let's assume we have a predefined playlist data
-#     playlist_data = [
-#         {'name': 'Song 1', 'album': 'Album 1', 'artist': 'Artist 1', 'release_date': '2022-01-01', 'length': 180, 'popularity': 80},
-#         {'name': 'Song 2', 'album': 'Album 2', 'artist': 'Artist 2', 'release_date': '2022-02-01', 'length': 200, 'popularity': 90},
-#         {'name': 'Song 3', 'album': 'Album 3', 'artist': 'Artist 1', 'release_date': '2022-03-01', 'length': 160, 'popularity': 85},
-#         {'name': 'Song 4', 'album': 'Album 1', 'artist': 'Artist 3', 'release_date': '2022-04-01', 'length': 220, 'popularity': 75},
-#         {'name': 'Song 5', 'album': 'Album 4', 'artist': 'Artist 2', 'release_date': '2022-05-01', 'length': 190, 'popularity': 88}
-#     ]
-
-#     df = pd.DataFrame(playlist_data)
-#     return df
-
-# Function to display barchart
 def display_top_artists_chart(df):
     st.subheader("Top 5 Artists Based on Popularity")
 
