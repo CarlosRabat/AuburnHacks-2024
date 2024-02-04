@@ -6,9 +6,6 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
 
-# Replace these with your own values
-
-
 # Grants Access to the spotify API
 def get_access_token():
     client_id = "fcf64bb0ff3d47298a54df28088d4f75"
@@ -34,11 +31,13 @@ def get_access_token():
         return None
 
 
+# Header for APIs Querys
 def get_auth_header():
     token = get_access_token()
     return {"Authorization": "Bearer " + token}
 
 
+# get the user for spotipy library
 def get_user():
     client_id = "fcf64bb0ff3d47298a54df28088d4f75"
     client_secret = "bab82d0743d74edcb3f18d24fc5953d3"

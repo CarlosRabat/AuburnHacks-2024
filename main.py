@@ -6,6 +6,7 @@ from related_artist import related_artist
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+
 app = FastAPI()
 origins = ["*"]
 
@@ -22,6 +23,7 @@ def read_root():
     return {"message": "Hello, FastAPI!"}
 
 
+# Main GET function to get the related artists to the webapp
 @app.get("/get_related_artist/{artist_name}")
 def get_related_artist_test(artist_name):
     artists = related_artist(artist_name)

@@ -1,6 +1,7 @@
 from user import get_access_token, get_user
 
 
+# Get all the track ids from a given playlist
 def get_track_ids_from_playlist(playlist_id):
     token = get_access_token()
     sp = get_user()
