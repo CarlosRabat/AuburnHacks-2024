@@ -5,6 +5,7 @@ from track import get_track_ids_from_playlist
 from related_artist import related_artist
 from fastapi import FastAPI
 
+
 app = FastAPI()
 
 
@@ -13,6 +14,7 @@ def read_root():
     return {"message": "Hello, FastAPI!"}
 
 
+# Main GET function to get the related artists to the webapp
 @app.get("/get_related_artist/{artist_name}")
 def get_related_artist(artist_name: str):
     # artists = related_artist(artist_name)
