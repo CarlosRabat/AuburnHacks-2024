@@ -16,9 +16,9 @@ sp = get_user()
 
 playlist_id = search_for_playlist_id("Top Global")
 ids = get_track_ids_from_playlist(playlist_id)
-print(ids)
-# feat = getTrackFeatures(ids[0])
-# dat = get_data(ids)
+
+feat = getTrackFeatures(ids[0])
+dat = get_data(ids)
 
 # print(related_artist)
-# print(dat)
+print(dat)
