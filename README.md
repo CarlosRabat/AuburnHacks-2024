@@ -7,4 +7,4 @@ This is Cody, Justus, and Carlos' 2024 Hackathon project.
 - [x] Understand Spotify API
 - [x] Figure out structure of the site
 - [x] Decide what stats to include
-- [x] Decide domain name and figure out how to get it
+- [x] Decide domain name and figure out how to get it (Not enough time and too many bugs to complete deployment)
