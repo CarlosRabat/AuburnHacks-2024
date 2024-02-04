@@ -7,6 +7,7 @@ function SubmitButton() {
     const [error, setError] = useState(null);
     const [status, setStatus] = useState('typing');
     const [responseData, setResponseData] = useState(null)
+    const [artistName, setArtistName] = useState('')
     
     if (status === 'success') {
         return <h1>That's right!</h1>
@@ -17,7 +18,7 @@ function SubmitButton() {
         setStatus('submitting');
         
         try {
-            const response = await fetch('http://127.0.0.1:8000/', {
+            const response = await fetch(`http://127.0.0.1:8000/get_related_artist/${encodeURIComponent(artistName)}`, {
                 method: 'GET', // or 'GET', 'PUT', 'DELETE', etc.
                 headers: {
                     'Content-Type': 'application/json'
@@ -36,19 +37,21 @@ function SubmitButton() {
             setError(err);
         }
     }
-    
-    
-    function handleTextareaChange(e) {
+
+    const handleChange = (e) => {
+        setArtistName(e.target.value); // Update artistName state with input value
         setAnswer(e.target.value);
-    }
+    };
+    
     
     return (
         <>
         <form onSubmit={handleSubmit}>
             <input
-            value={answer}
-            onChange={handleTextareaChange}
-            disabled={status === 'submitting'}
+            type="text"
+            value={artistName}
+            onChange={handleChange}
+            placeholder="Enter artist name"
             />
             <br />
             <button disabled={
