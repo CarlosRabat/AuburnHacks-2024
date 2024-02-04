@@ -9,10 +9,6 @@ function SubmitButton() {
     const [responseData, setResponseData] = useState(null)
     const [artistName, setArtistName] = useState('')
     
-    if (status === 'success') {
-        return <h1>That's right!</h1>
-    }
-    
     async function handleSubmit(e) {
         e.preventDefault();
         setStatus('submitting');
@@ -31,7 +27,7 @@ function SubmitButton() {
             const responseData = await response.json();
             setResponseData(responseData)
             //await submitForm(answer);
-            //setStatus('success');
+            setStatus('success');
         } catch (err) {
             setStatus('typing');
             setError(err);
@@ -62,8 +58,15 @@ function SubmitButton() {
             </button>
             {responseData && (
                 <div>
-                    <h2>Response Data:</h2>
-                    <pre>{JSON.stringify(responseData, null, 2)}</pre>
+                <h2 style={{ color: 'black' }}>Response Data:</h2>
+                <div>
+                    {responseData.map((item, index) => (
+                        <div key={index}>
+                            <h3 style={{ color: 'black' }}>{item[0]}</h3> {/* Name */}
+                            <img src={item[1]} alt={item[0]} /> {/* Photo */}
+                        </div>
+                    ))}
+                </div>
                 </div>
             )}
             {error !== null &&
@@ -75,18 +78,5 @@ function SubmitButton() {
         </>
     );
     }
-    
-function submitForm(answer) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-        let shouldError = answer.toLowerCase() !== 'lima'
-        if (shouldError) {
-            reject(new Error('Not a valid Artist name!'));
-        } else {
-            resolve();
-        }
-        }, 1500);
-    });
-}
 
 export default SubmitButton;
