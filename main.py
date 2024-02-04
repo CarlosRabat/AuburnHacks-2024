@@ -17,3 +17,9 @@ def read_root():
 def get_related_artist(artist_name: str):
     # artists = related_artist(artist_name)
     return {"related_artists": "Artist1"}
+
+
+@app.get("/get_related_artist_test/{artist_name}")
+def get_related_artist_test(artist_name):
+    artists = related_artist(artist_name)
+    return artists
