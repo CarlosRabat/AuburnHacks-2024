@@ -18,7 +18,7 @@ playlist_id = search_for_playlist_id("Top Global")
 ids = get_track_ids_from_playlist(playlist_id)
 
 feat = getTrackFeatures(ids[0])
-dat = get_data(ids)
+# dat = get_data(ids)
 
 # print(related_artist)
-print(dat)
+print(ids)
