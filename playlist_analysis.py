@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-#import plotly.express as px
+import plotly.express as px
 #import seaborn as sns
 import matplotlib.pyplot as plt
 from user import get_access_token, get_user
@@ -45,25 +45,18 @@ def display_top_artists_chart(df):
     st.subheader("Top 5 Artists Based on Popularity")
 
     # Group by artist and calculate average popularity
-    top_artists = df.groupby('artist')['popularity'].mean().sort_values(ascending=False).head(5).reset_index()
+    artist_popularity = df.groupby('artist')['popularity'].mean().sort_values(ascending=False).head(5).reset_index()
 
     # Create barchart using Plotly
-    # fig = px.bar(artist_popularity, x='artist', y='popularity', text='popularity',
-    #              labels={'popularity': 'Average Popularity'},
-    #              title='Top 5 Artists Based on Popularity',
-    #              hover_data=['artist', 'popularity'])
+    fig = px.bar(artist_popularity, x='artist', y='popularity', text='popularity',
+                 labels={'popularity': 'Average Popularity'},
+                 title='Top 5 Artists Based on Popularity',
+                 hover_data=['artist', 'popularity'])
 
-    # fig.update_traces(texttemplate='%{text:.2s}', textposition='outside')
-    # st.plotly_chart(fig)
+    fig.update_traces(texttemplate='%{text:.2s}', textposition='outside')
+    st.plotly_chart(fig)
 
-    # Plotting bar chart
-    fig, ax = plt.subplots()
-    ax.bar(top_artists.index, top_artists.values)
-    ax.set_xlabel('Artist')
-    ax.set_ylabel('Popularity')
-    ax.set_title('Top 5 Artists by Popularity')
-    st.pyplot(fig)
-
+    
 # Function to display artist with the latest album
 def display_latest_album_card(df):
     st.subheader("Artist with the Latest Album")
