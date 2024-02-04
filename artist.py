@@ -25,9 +25,15 @@ def search_related_artist(artist_id, limit=5):
     related_artists = json_result.get("artists", [])[:limit]
 
     artist_info = [
-        {"name": artist.get("name"), "id": artist.get("id")}
+        {
+            "name": artist.get("name"),
+            "id": artist.get("id"),
+            "images": artist.get("images", [{}])[0].get("url"),
+        }
         for artist in related_artists
     ]
     return artist_info
-    # artist_names = [artist.get("name") for artist in related_artists]
-    # return artist_names
+
+
+# id = search_for_artist_id("Taylor")
+# print(search_related_artist(id))
