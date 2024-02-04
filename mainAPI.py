@@ -125,7 +125,7 @@ def main():
     sp = get_user(client_id, client_secret)
 
     playlist_id = search_for_playlist_id(access_token, "Top Global")
-    ids = get_track_ids_from_playlist(sp, access_token, playlist_id)
+    ids = get_track_ids_from_playlist(playlist_id)
 
     #print(ids[0])
 
