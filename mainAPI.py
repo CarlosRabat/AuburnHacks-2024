@@ -108,7 +108,7 @@ def getTrackFeatures (sp, id):
     loudness = features[0]['loudness']
     
     
-    track = [name, album, artist,release_date,length, popularity, danceability, acousticness, danceability, energy,instrumentalness, liveness]
+    track = [name, album, artist,release_date,length, popularity, acousticness, danceability, energy,instrumentalness, liveness,loudness]
     return track
 
 
