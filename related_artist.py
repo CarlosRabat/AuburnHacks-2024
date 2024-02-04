@@ -8,5 +8,5 @@ from artist import search_for_artist_id, search_related_artist
 def related_artist(artist_name):
     artist_id = search_for_artist_id(artist_name)
     related_artists = search_related_artist(artist_id)
-    artist_names = [artist["name"] for artist in related_artists]
+    artist_names = [[artist["name"], artist["images"]] for artist in related_artists]
     return artist_names

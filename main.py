@@ -4,22 +4,27 @@ from playlist import search_for_playlist_id
 from track import get_track_ids_from_playlist
 from related_artist import related_artist
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
+origins = ["*"]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def read_root():
     return {"message": "Hello, FastAPI!"}
 
 
+# Main GET function to get the related artists to the webapp
 @app.get("/get_related_artist/{artist_name}")
-def get_related_artist(artist_name: str):
-    # artists = related_artist(artist_name)
-    return {"related_artists": "Artist1"}
-
-
-@app.get("/get_related_artist_test/{artist_name}")
 def get_related_artist_test(artist_name):
     artists = related_artist(artist_name)
     return artists

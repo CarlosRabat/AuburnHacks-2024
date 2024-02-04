@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router} from 'react-router-dom'; // Import Link from react-router-dom
 import './index.css';
 import FrontPage from './FrontPage';
-import SecondPage from './SecondPage'; // Import SecondPage component
+//import SecondPage from './SecondPage'; // Import SecondPage component
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

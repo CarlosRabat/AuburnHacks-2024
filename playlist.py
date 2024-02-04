@@ -3,6 +3,7 @@ import json
 from user import get_auth_header
 
 
+# Get the playlist id for further procesing
 def search_for_playlist_id(playlist_name):
     url = "https://api.spotify.com/v1/search"
     headers = get_auth_header()
