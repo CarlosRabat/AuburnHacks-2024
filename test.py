@@ -4,6 +4,7 @@ from playlist import search_for_playlist_id
 from track import get_track_ids_from_playlist
 from related_artist import related_artist
 from track_features import getTrackFeatures
+from getdata import get_data
 
 # from related_artist
 access_token = get_access_token()
@@ -17,6 +18,7 @@ playlist_id = search_for_playlist_id("Top Global")
 ids = get_track_ids_from_playlist(playlist_id)
 
 feat = getTrackFeatures(ids[0])
+dat = get_data(ids)
 
 #print(related_artist)
-print(feat)
+print(dat)

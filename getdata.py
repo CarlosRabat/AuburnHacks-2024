@@ -1,10 +1,22 @@
-from mainAPI import get_access_token, get_user, search_for_artist_id, search_for_playlist_id, getTrackFeatures
+# from mainAPI import get_access_token, get_user, search_for_artist_id, search_for_playlist_id, getTrackFeatures
 import pandas as pd 
 import time
-from track import get_track_ids_from_playlist
+# from track import get_track_ids_from_playlist
 from user import get_access_token, get_user
+from track_features import getTrackFeatures
 
+def get_data(ids):
+    tracks = []
+    for i in range(2):
+        time.sleep(5)
+        track = getTrackFeatures(ids[i])
+        tracks.append(track)
+        print('done with ', i)
 
+    df = pd.DataFrame(tracks, columns= ['name', 'album', 'artist','release_date','length', 'popularity', 'acousticness', 'danceability', 'energy','instrumentalness', 'liveness','loudness'])
+    #df.to_csv('spotify.csv')
+    #print(df)
+    return df
 
 
 # def main():
