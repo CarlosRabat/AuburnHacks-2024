@@ -83,6 +83,35 @@ def get_user(client_id, client_secret):
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     return sp
 
+def getTrackFeatures (sp, id):
+    meta = sp.track(id)
+    features =sp.audio_features(id)
+
+    #print(meta)
+
+    #meta data
+    name =meta['name']    
+    album = meta['album']['name']
+    artist = meta['album']['artists'][0]['name']   
+    release_date = meta['album']['release_date'] 
+    length = meta['duration_ms']
+    popularity = meta['popularity'] 
+
+
+    #features from the dat
+
+    acousticness = features[0]['acousticness'] 
+    danceability = features[0]['danceability']   
+    energy = features[0]['energy'] 
+    instrumentalness = features[0]['instrumentalness']
+    liveness = features[0]["liveness"]
+    loudness = features[0]['loudness']
+    
+    
+    track = [name, album, artist,release_date,length, popularity, danceability, acousticness, danceability, energy,instrumentalness, liveness]
+    return track
+
+
 
 def main():
     # Replace these with your own values
@@ -98,7 +127,13 @@ def main():
     playlist_id = search_for_playlist_id(access_token, "Top Global")
     ids = get_track_ids_from_playlist(sp, access_token, playlist_id)
 
-    print(ids)
+    #print(ids[0])
+
+    #dat = getTrackFeatures(sp,ids[0])
+    #print(dat)
+
+   
+
 
 
 if __name__ == "__main__":
