@@ -2,6 +2,8 @@ import requests
 from requests import get
 import base64
 import json
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
 
 
 def get_access_token(client_id, client_secret):
@@ -30,7 +32,7 @@ def get_auth_header(token):
     return {"Authorization": "Bearer " + token}
 
 
-def search_for_artist(token, artist_name):
+def search_for_artist_id(token, artist_name):
     url = "https://api.spotify.com/v1/search"
     headers = get_auth_header(token)
     query = f"?q={artist_name}&type=artist&limit=1"
@@ -41,6 +43,19 @@ def search_for_artist(token, artist_name):
     artist_id = json_result.get("artists", {}).get("items", [{}])[0].get("id")
 
     return artist_id
+
+
+def search_for_playlist_id(token, playlist_name):
+    url = "https://api.spotify.com/v1/search"
+    headers = get_auth_header(token)
+    query = f"?q={playlist_name}&type=playlist&limit=1"
+
+    query_url = url + query
+    result = get(query_url, headers=headers)
+    json_result = json.loads(result.content)
+    playlist_id = json_result.get("playlists", {}).get("items", [{}])[0].get("id")
+
+    return playlist_id
 
 
 def search_related_artist(token, artist_id, limit=5):
@@ -54,6 +69,21 @@ def search_related_artist(token, artist_id, limit=5):
     return artist_names
 
 
+def get_track_ids_from_playlist(sp, token, playlist_id):
+    id = []
+    play_list = sp.user_playlist(token, playlist_id)
+    for item in play_list["tracks"]["items"]:
+        track = item["track"]
+        id.append(track["id"])
+    return id
+
+
+def get_user(client_id, client_secret):
+    client_credentials_manager = SpotifyClientCredentials(client_id, client_secret)
+    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+    return sp
+
+
 def main():
     # Replace these with your own values
     client_id = "fcf64bb0ff3d47298a54df28088d4f75"
@@ -61,10 +91,14 @@ def main():
 
     access_token = get_access_token(client_id, client_secret)
 
-    artist_id = search_for_artist(access_token, "ACDC")
-    related_artist = search_related_artist(access_token, artist_id)
+    # artist_id = search_for_artist_id(access_token, "ACDC")
+    # related_artist = search_related_artist(access_token, artist_id)
+    sp = get_user(client_id, client_secret)
 
-    print(related_artist)
+    playlist_id = search_for_playlist_id(access_token, "Top Global")
+    ids = get_track_ids_from_playlist(sp, access_token, playlist_id)
+
+    print(ids)
 
 
 if __name__ == "__main__":
