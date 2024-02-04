@@ -11,7 +11,6 @@ root.render(
   <React.StrictMode>
     <Router> 
       <FrontPage />
-      <SecondPage />
     </Router>
   </React.StrictMode>
 );
