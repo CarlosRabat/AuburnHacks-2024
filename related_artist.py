@@ -10,3 +10,6 @@ def related_artist(artist_name):
     related_artists = search_related_artist(artist_id)
     artist_names = [[artist["name"], artist["images"]] for artist in related_artists]
     return artist_names
+
+
+# print(related_artist("taylor"))
