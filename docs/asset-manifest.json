@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.51aaa142.css",
+    "main.js": "/static/js/main.daf00c33.js",
+    "static/js/592.07ba93a2.chunk.js": "/static/js/592.07ba93a2.chunk.js",
+    "static/media/SpotifyLogo.png": "/static/media/SpotifyLogo.cd2c2228d20d582d5ef5.png",
+    "index.html": "/index.html",
+    "main.51aaa142.css.map": "/static/css/main.51aaa142.css.map",
+    "main.daf00c33.js.map": "/static/js/main.daf00c33.js.map",
+    "592.07ba93a2.chunk.js.map": "/static/js/592.07ba93a2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.51aaa142.css",
+    "static/js/main.daf00c33.js"
+  ]
+}
