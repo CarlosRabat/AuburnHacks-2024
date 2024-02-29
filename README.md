@@ -30,7 +30,8 @@ We learned how to start from scratch and develop a full front and back end syste
 ### What's next for Sound Safari
 In the future, if we were to continue to develop this web application and data analysis tool, we would add more pages with more stats, make it look more professional, and try to improve the overall User Experience.
 
-![Sound Safari Logo](https://devpost.com/software/sound-safari?ref_content=my-projects-tab&ref_feature=my_projects "Sound Safari at AU Hacks")
+
+![Sound Safari Application](SoundSafariPicture.png)
 
 
 
